@@ -24,7 +24,7 @@
  *
  """
 
-
+from time import process_time, time
 import sys
 import config
 import threading
@@ -44,7 +44,7 @@ operación seleccionada.
 # ___________________________________________________
 
 
-servicefile = 'bus_routes_14000.csv'
+servicefile = 'bus_routes_1000.csv'
 initialStation = None
 
 # ___________________________________________________
@@ -83,8 +83,10 @@ def optionThree(cont):
 
 
 def optionFour(cont, initialStation):
+    start_time = process_time()
     controller.minimumCostPaths(cont, initialStation)
-
+    stop_time = process_time()
+    print("Tiempo de ejecución: "+str((stop_time-start_time)))
 
 def optionFive(cont, destStation):
     haspath = controller.hasPath(cont, destStation)
@@ -155,6 +157,6 @@ def thread_cycle():
 
 if __name__ == "__main__":
     threading.stack_size(67108864)  # 64MB stack
-    sys.setrecursionlimit(2 ** 20)
+    sys.setrecursionlimit(2 ** 5)
     thread = threading.Thread(target=thread_cycle)
     thread.start()

@@ -49,7 +49,7 @@ def newAnalyzer():
    connections: Grafo para representar las rutas entre estaciones
    components: Almacena la informacion de los componentes conectados
    paths: Estructura que almancena los caminos de costo minimo desde un
-           vertice determinado a todos los otros vértices del grafo
+   vertice determinado a todos los otros vértices del grafo
     """
     try:
         analyzer = {
